@@ -14,6 +14,43 @@ def calcularMatrizHeuris(coordenadas, m):
     
     return m
 
+def calcularMatrizTrans(mtrans):
+    mtrans = [[0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+              [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]]
+    return mtrans
+
 def calcularMatrizDist(cods, coordenadas, mr):
     keys = list(cods.keys())
 
@@ -23,44 +60,44 @@ def calcularMatrizDist(cods, coordenadas, mr):
         if(keys[i] % 10 != 0):
             coord1 = coordenadas.get(keys[i])
             coord2 = coordenadas.get(keys[i - 1])
-            mr[keys[i]].append((keys[i - 1], sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2)))
+            mr[keys[i]].append((keys[i - 1], sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2), 0))
         if(i != len(keys) - 1):
             if (keys[i + 1] % 10 != 0):
                 coord1 = coordenadas.get(keys[i])
                 coord2 = coordenadas.get(keys[i + 1])
-                mr[keys[i]].append((keys[i + 1], sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2)))
+                mr[keys[i]].append((keys[i + 1], sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2), 0))
 
     coord1 = coordenadas.get(13)
-    mr[13].append((33, 1.5*sqrt((coord1[0] - coordenadas.get(33)[0])**2 + (coord1[1] - coordenadas.get(33)[1])**2)))
-    mr[13].append((43, 1.5*sqrt((coord1[0] - coordenadas.get(43)[0])**2 + (coord1[1] - coordenadas.get(43)[1])**2)))
+    mr[13].append((33, 1.5*sqrt((coord1[0] - coordenadas.get(33)[0])**2 + (coord1[1] - coordenadas.get(33)[1])**2), 1))
+    mr[13].append((43, 1.5*sqrt((coord1[0] - coordenadas.get(43)[0])**2 + (coord1[1] - coordenadas.get(43)[1])**2), 1))
 
-    mr[24].append((44, 1.5*sqrt((coordenadas.get(24)[0] - coordenadas.get(44)[0])**2 + (coordenadas.get(24)[1] - coordenadas.get(44)[1])**2)))
+    mr[24].append((44, 1.5*sqrt((coordenadas.get(24)[0] - coordenadas.get(44)[0])**2 + (coordenadas.get(24)[1] - coordenadas.get(44)[1])**2), 1))
 
     coord1 = coordenadas.get(26)
-    mr[26].append((34, 1.5*sqrt((coord1[0] - coordenadas.get(34)[0])**2 + (coord1[1] - coordenadas.get(34)[1])**2)))
-    mr[26].append((55, 1.5*sqrt((coord1[0] - coordenadas.get(55)[0])**2 + (coord1[1] - coordenadas.get(55)[1])**2)))
+    mr[26].append((34, 1.5*sqrt((coord1[0] - coordenadas.get(34)[0])**2 + (coord1[1] - coordenadas.get(34)[1])**2), 1))
+    mr[26].append((55, 1.5*sqrt((coord1[0] - coordenadas.get(55)[0])**2 + (coord1[1] - coordenadas.get(55)[1])**2), 1))
 
     coord1 = coordenadas.get(33)
-    mr[33].append((13, 1.5*sqrt((coord1[0] - coordenadas.get(13)[0])**2 + (coord1[1] - coordenadas.get(13)[1])**2)))
-    mr[33].append((43, 1.5*sqrt((coord1[0] - coordenadas.get(43)[0])**2 + (coord1[1] - coordenadas.get(43)[1])**2)))
+    mr[33].append((13, 1.5*sqrt((coord1[0] - coordenadas.get(13)[0])**2 + (coord1[1] - coordenadas.get(13)[1])**2), 1))
+    mr[33].append((43, 1.5*sqrt((coord1[0] - coordenadas.get(43)[0])**2 + (coord1[1] - coordenadas.get(43)[1])**2), 1))
 
     coord1 = coordenadas.get(34)
-    mr[34].append((26, 1.5*sqrt((coord1[0] - coordenadas.get(26)[0])**2 + (coord1[1] - coordenadas.get(26)[1])**2)))
-    mr[34].append((55, 1.5*sqrt((coord1[0] - coordenadas.get(55)[0])**2 + (coord1[1] - coordenadas.get(55)[1])**2)))
+    mr[34].append((26, 1.5*sqrt((coord1[0] - coordenadas.get(26)[0])**2 + (coord1[1] - coordenadas.get(26)[1])**2), 1))
+    mr[34].append((55, 1.5*sqrt((coord1[0] - coordenadas.get(55)[0])**2 + (coord1[1] - coordenadas.get(55)[1])**2), 1))
 
     coord1 = coordenadas.get(43)
-    mr[43].append((13, 1.5*sqrt((coord1[0] - coordenadas.get(13)[0])**2 + (coord1[1] - coordenadas.get(13)[1])**2)))
-    mr[43].append((33, 1.5*sqrt((coord1[0] - coordenadas.get(33)[0])**2 + (coord1[1] - coordenadas.get(33)[1])**2)))
+    mr[43].append((13, 1.5*sqrt((coord1[0] - coordenadas.get(13)[0])**2 + (coord1[1] - coordenadas.get(13)[1])**2), 1))
+    mr[43].append((33, 1.5*sqrt((coord1[0] - coordenadas.get(33)[0])**2 + (coord1[1] - coordenadas.get(33)[1])**2), 1))
 
-    mr[44].append((24, 1.5*sqrt((coordenadas.get(44)[0] - coordenadas.get(24)[0])**2 + (coordenadas.get(44)[1] - coordenadas.get(24)[1])**2)))
+    mr[44].append((24, 1.5*sqrt((coordenadas.get(44)[0] - coordenadas.get(24)[0])**2 + (coordenadas.get(44)[1] - coordenadas.get(24)[1])**2), 1))
 
-    mr[46].append((53, 1.5*sqrt((coordenadas.get(46)[0] - coordenadas.get(53)[0])**2 + (coordenadas.get(46)[1] - coordenadas.get(53)[1])**2)))
+    mr[46].append((53, 1.5*sqrt((coordenadas.get(46)[0] - coordenadas.get(53)[0])**2 + (coordenadas.get(46)[1] - coordenadas.get(53)[1])**2), 1))
 
-    mr[53].append((46, 1.5*sqrt((coordenadas.get(53)[0] - coordenadas.get(46)[0])**2 + (coordenadas.get(53)[1] - coordenadas.get(46)[1])**2)))
+    mr[53].append((46, 1.5*sqrt((coordenadas.get(53)[0] - coordenadas.get(46)[0])**2 + (coordenadas.get(53)[1] - coordenadas.get(46)[1])**2), 1))
 
     coord1 = coordenadas.get(55)
-    mr[55].append((26, 1.5*sqrt((coord1[0] - coordenadas.get(26)[0])**2 + (coord1[1] - coordenadas.get(26)[1])**2)))
-    mr[55].append((34, 1.5*sqrt((coord1[0] - coordenadas.get(34)[0])**2 + (coord1[1] - coordenadas.get(34)[1])**2)))
+    mr[55].append((26, 1.5*sqrt((coord1[0] - coordenadas.get(26)[0])**2 + (coord1[1] - coordenadas.get(26)[1])**2), 1))
+    mr[55].append((34, 1.5*sqrt((coord1[0] - coordenadas.get(34)[0])**2 + (coord1[1] - coordenadas.get(34)[1])**2), 1))
 
     return mr
 
@@ -93,15 +130,19 @@ m = []
 
 m = calcularMatrizHeuris(coordenadas, m)
 
+mtrans = []
+
+mtrans = calcularMatrizTrans(mtrans)
+
 mr = {}
 
 mr = calcularMatrizDist(cods, coordenadas, mr)
 
 
-def a_Estrella(mDist, orig, dest):
+def a_Estrella(mDist, mtrans, orig, dest, prior):
     abiertos = []
     cerrados = []
-    abiertos.append((orig, 0, [])) # (codigo, peso acumulado, camino hasta orig)
+    abiertos.append((orig, 0, [], 0)) # (codigo, peso acumulado, camino hasta orig, nÂºtransbordos)
     predecesor = orig
     encontrado = False
     while(not encontrado):
@@ -110,8 +151,19 @@ def a_Estrella(mDist, orig, dest):
             return -1
         nodo = abiertos[0] # terminar
         for nd_aux in abiertos:
-            if(nd_aux[1] + mDist[cods[orig]][cods[nd_aux[0]]] < nodo[1] + mDist[cods[orig]][cods[nodo[0]]]): 
-                nodo = nd_aux
+            if (prior == False):
+                if(nd_aux[1] + mDist[cods[orig]][cods[nd_aux[0]]] < nodo[1] + mDist[cods[orig]][cods[nodo[0]]]): 
+                    nodo = nd_aux
+                elif(nd_aux[1] + mDist[cods[orig]][cods[nd_aux[0]]] == nodo[1] + mDist[cods[orig]][cods[nodo[0]]]):
+                    if(nd_aux[3] + mtrans[cods[orig]][cods[nd_aux[0]]] < nodo[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                        nodo = nd_aux
+            else:
+                if(nd_aux[3] + mtrans[cods[orig]][cods[nd_aux[0]]] < nodo[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                    nodo = nd_aux
+                elif(nd_aux[3] + mtrans[cods[orig]][cods[nd_aux[0]]] == nodo[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                    if(nd_aux[1] + mDist[cods[orig]][cods[nd_aux[0]]] < nodo[1] + mDist[cods[orig]][cods[nodo[0]]]):
+                        nodo = nd_aux
+
 
         cerrados.append(nodo)
         abiertos.remove(nodo)
@@ -135,10 +187,11 @@ def a_Estrella(mDist, orig, dest):
             
             if not esta:
                 predecesor = nodo
-                abiertos.append((s[0], s[1] + predecesor[1], []))
+                abiertos.append((s[0], s[1] + predecesor[1], [], s[2] + predecesor[3]))
                 for c in predecesor[2]:
                     abiertos[len(abiertos)-1][2].append(c)
                 abiertos[len(abiertos)-1][2].append(predecesor[0])
+
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -149,7 +202,10 @@ def lechuga():
     datos2 = datos.split(" ")
     paradaIn = int(datos2[0])
     paradaOut = int(datos2[1])
-    ruta = a_Estrella(m,paradaIn,paradaOut) #con las cosas inicializada
+    modo = bool(datos2[2])
+    if(paradaIn >= 131):
+        return jsonify({"Mensaje: Estableciendo conexión"})
+    ruta = a_Estrella(mr, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
     print(datos)
     return jsonify(
         {
