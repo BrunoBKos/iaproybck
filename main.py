@@ -201,11 +201,11 @@ def lechuga():
     datos = request.json
     datos2 = datos.split(" ")
     paradaIn = int(datos2[0])
-    paradaOut = int(datos2[1])
-    modo = bool(datos2[2])
     if(paradaIn >= 131):
         return jsonify({"Mensaje: Estableciendo conexión"})
-    ruta = a_Estrella(mr, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
+    paradaOut = int(datos2[1])
+    modo = bool(datos2[2])
+    ruta = a_Estrella(m, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
     print(datos)
     return jsonify(
         {
