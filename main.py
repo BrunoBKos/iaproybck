@@ -173,11 +173,32 @@ def a_Estrella(mDist, mtrans, orig, dest, prior):
             print(nodo[2])
             return nodo[2]
         ady = adyacentes(nodo[0],mr)
+        predecesor = nodo
         for s in ady:
             esta = False
             for n in abiertos:
                 if(s[0] == n[0]):
-                    esta = True
+                    if (prior == False):
+                        if(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]): 
+                            abiertos.remove(n)
+                        elif(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]):
+                            if(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                                abiertos.remove(n)
+                            else:
+                                esta = True
+                        else:
+                            esta = True
+
+                    else:
+                        if(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                            abiertos.remove(n)
+                        elif(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                            if(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]):
+                                abiertos.remove(n)
+                            else:
+                                esta = True
+                        else:
+                            esta = True
                     break
             if (not esta):
                 for n in cerrados:
@@ -186,7 +207,6 @@ def a_Estrella(mDist, mtrans, orig, dest, prior):
                         break
             
             if not esta:
-                predecesor = nodo
                 abiertos.append((s[0], s[1] + predecesor[1], [], s[2] + predecesor[3]))
                 for c in predecesor[2]:
                     abiertos[len(abiertos)-1][2].append(c)
