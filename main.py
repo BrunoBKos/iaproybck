@@ -139,7 +139,7 @@ mr = {}
 mr = calcularMatrizDist(cods, coordenadas, mr)
 
 
-def a_Estrella(mDist, mtrans, orig, dest, prior):
+def a_EstrellaTrans(mDist, mtrans, orig, dest, prior):
     abiertos = []
     cerrados = []
     abiertos.append((orig, 0, [], 0)) # (codigo, peso acumulado, camino hasta orig, nÂºtransbordos)
@@ -181,7 +181,7 @@ def a_Estrella(mDist, mtrans, orig, dest, prior):
                     if (prior == False):
                         if(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]): 
                             abiertos.remove(n)
-                        elif(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]):
+                        elif(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] == n[1] + mDist[cods[orig]][cods[nodo[0]]]):
                             if(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
                                 abiertos.remove(n)
                             else:
@@ -192,7 +192,7 @@ def a_Estrella(mDist, mtrans, orig, dest, prior):
                     else:
                         if(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
                             abiertos.remove(n)
-                        elif(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] < n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
+                        elif(s[2] + predecesor[3] + mtrans[cods[orig]][cods[s[0]]] == n[3] + mtrans[cods[orig]][cods[nodo[0]]]):
                             if(s[1] + predecesor[1] + mDist[cods[orig]][cods[s[0]]] < n[1] + mDist[cods[orig]][cods[nodo[0]]]):
                                 abiertos.remove(n)
                             else:
@@ -212,6 +212,49 @@ def a_Estrella(mDist, mtrans, orig, dest, prior):
                     abiertos[len(abiertos)-1][2].append(c)
                 abiertos[len(abiertos)-1][2].append(predecesor[0])
 
+def a_EstrellaTime(mDist, mtrans, orig, dest, prior):
+    abiertos = []
+    cerrados = []
+    abiertos.append((orig, 0, [])) # (codigo, peso acumulado, camino hasta orig, nÂºtransbordos)
+    predecesor = orig
+    encontrado = False
+    while(not encontrado):
+        if(len(abiertos) == 0):
+            print("error")
+            return -1
+        nodo = abiertos[0] # terminar
+        for nd_aux in abiertos:
+            if(nd_aux[1] + mDist[cods[orig]][cods[nd_aux[0]]] < nodo[1] + mDist[cods[orig]][cods[nodo[0]]]): 
+                nodo = nd_aux
+
+
+        cerrados.append(nodo)
+        abiertos.remove(nodo)
+        
+        if(nodo[0] == dest):
+            nodo[2].append(dest)
+            print(nodo[2])
+            return nodo[2]
+        ady = adyacentes(nodo[0],mr)
+        predecesor = nodo
+        for s in ady:
+            esta = False
+            for n in abiertos:
+                if(s[0] == n[0]):
+                    esta = True
+                    break
+            if (not esta):
+                for n in cerrados:
+                    if(s[0] == n[0]):
+                        esta = True
+                        break
+            
+            if not esta:
+                abiertos.append((s[0], s[1] + predecesor[1], []))
+                for c in predecesor[2]:
+                    abiertos[len(abiertos)-1][2].append(c)
+                abiertos[len(abiertos)-1][2].append(predecesor[0])
+
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -224,8 +267,12 @@ def lechuga():
     if(paradaIn >= 131):
         return jsonify({"Mensaje: Estableciendo conexión"})
     paradaOut = int(datos2[1])
-    modo = bool(datos2[2])
-    ruta = a_Estrella(m, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
+    modo = datos2[2] == "true"
+    print(modo)
+    if (modo == False):
+        ruta = a_EstrellaTime(m, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
+    else:
+        ruta = a_EstrellaTrans(m, mtrans,paradaIn,paradaOut, modo) #con las cosas inicializada
     print(datos)
     return jsonify(
         {
